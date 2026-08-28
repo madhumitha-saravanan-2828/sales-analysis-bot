@@ -178,7 +178,10 @@ prompt = ChatPromptTemplate.from_messages([
     MessagesPlaceholder("agent_scratchpad")
 ])
 
-llm = ChatGroq(model_name="llama-3.1-8b-instant", api_key=groq_api_key)
+llm = ChatGroq(
+    model_name="openai/gpt-oss-20b",
+    api_key=groq_api_key
+)
 agent = create_openai_tools_agent(llm=llm, tools=tools, prompt=prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
